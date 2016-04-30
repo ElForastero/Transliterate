@@ -1,0 +1,19 @@
+{
+    "name": "elforastero/transliterate",
+    "description": "Transliteration package for laravel 5",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Eugene Dzhumak",
+            "email": "elforastero@ya.ru"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ElForastero\\Transliterate\\": "src/"
+        }
+    },
+    "require": {
+        "illuminate/support": "~5"
+    }
+}
