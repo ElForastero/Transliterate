@@ -12,6 +12,7 @@
 ```php
 use Transliterate;
 ...
+
 $string = '\'"#^_^ Если б мишки были пчёлами, то они бы нипочем, никогда и не подумали так высо́ко строить дом.';
 
 $string = Transliterate::make($string, ['type' => 'url', 'lowercase' => true]);
