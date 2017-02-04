@@ -13,6 +13,24 @@
 composer require elforastero/transliterate
 ```
 
+```php
+//config/app.php
+
+//...
+'providers' => [
+//...
+
+/*
+* Package Service Providers...
+*/
+ElForastero\Transliterate\TransliterationServiceProvider::class,
+
+//...
+];
+
+//...
+```
+
 #####Использование:
 ```php
 use Transliterate;
