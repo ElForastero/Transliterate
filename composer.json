@@ -1,5 +1,6 @@
 {
     "name": "elforastero/transliterate",
+    "version": "1.0.0",
     "description": "Transliteration package for laravel 5",
     "license": "MIT",
     "authors": [
