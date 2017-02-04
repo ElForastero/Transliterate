@@ -8,6 +8,11 @@
 * строку в url
 * строку в имя файла
 
+#####Установка:
+```
+composer require elforastero/transliterate
+```
+
 #####Использование:
 ```php
 use Transliterate;
