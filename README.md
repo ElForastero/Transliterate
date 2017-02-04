@@ -20,11 +20,11 @@ composer require elforastero/transliterate
 /*
 * Package Service Providers...
 */
-ElForastero\Transliterate\TransliterationServiceProvider::class,
+  ElForastero\Transliterate\TransliterationServiceProvider::class,
 ],
 
 'aliases' => [
-'Transliterate' => ElForastero\Transliterate\TransliterationFacade::class,
+  'Transliterate' => ElForastero\Transliterate\TransliterationFacade::class,
 ],
 ```
 
