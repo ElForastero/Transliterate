@@ -38,6 +38,9 @@ class Transliteration
                 case 'filename':
                     $transliterated = preg_replace('/\s+/', '_', $transliterated);
                     break;
+                case 'text':
+                    $transliterated = preg_replace('/\s+/', ' ', $transliterated);
+                    break;
             }
         } else {
             $transliterated = preg_replace('/\s+/', '-', $transliterated);
