@@ -23,7 +23,7 @@ class TransliterationServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('Transliteration', function($app) {
+        $this->app->bind('Transliteration', function ($app) {
             return new Transliteration();
         });
     }

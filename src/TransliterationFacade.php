@@ -1,4 +1,5 @@
 <?php
+
 namespace ElForastero\Transliterate;
 
 use Illuminate\Support\Facades\Facade;
