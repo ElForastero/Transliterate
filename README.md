@@ -1,14 +1,14 @@
 # Transliterate
 Небольшой пакет для транслитерации кирилицы :poop:
 
->#####Дисклеймер
+### Дисклеймер
 >Работать - работает. Сорян, если что не так.
 
 Умеет:
-* строку в url
-* строку в имя файла
+* строку в url ```['type' => 'url']```
+* строку в имя файла ```['type' => 'filename']```
 
-#####Установка:
+### Установка:
 ```
 composer require elforastero/transliterate
 ```
@@ -17,23 +17,25 @@ composer require elforastero/transliterate
 //config/app.php
 
 'providers' => [
-/*
-* Package Service Providers...
-*/
+  //...
   ElForastero\Transliterate\TransliterationServiceProvider::class,
 ],
 
 'aliases' => [
+  //...
   'Transliterate' => ElForastero\Transliterate\TransliterationFacade::class,
 ],
 ```
 
-#####Использование:
+### Использование:
 ```php
 use Transliterate;
 ...
 
 $string = '\'"#^_^ Если б мишки были пчёлами, то они бы нипочем, никогда и не подумали так высо́ко строить дом.';
+
+$string = Transliterate::make($string);
+// Esli b mishki bili pchyolami to oni bi nipochem nikogda i ne podumali tak visoko stroit dom
 
 $string = Transliterate::make($string, ['type' => 'url', 'lowercase' => true]);
 // esli-b-mishki-bili-pchyolami-to-oni-bi-nipochem-nikogda-i-ne-podumali-tak-visoko-stroit-dom
@@ -45,16 +47,19 @@ $string = Transliterate::make($string, ['type' => 'url', 'lowercase' => true, 'm
 // esli-b-mishki-by'li-pchyolami-to-oni-by'-nipochem-nikogda-i-ne-podumali-tak-vy'soko-stroit`-dom
 ```
 
-#####Доступные параметры:
+### Доступные параметры:
 ```php
 [
-  'type' => 'url', // 'url' или 'filename'. Первым заменяем пробелы на '-', вторым на '_'. По дефолту 'url'.
-  'lowercase' => true, // Преобразовать в нижний регистр.
+  'type' => 'url',
+  // 'url', 'filename' или 'text'. Первым заменяем пробелы на '-', вторым на '_'.
+  // По дефолту 'text', который ничего не заменяет.
+  
+  'lowercase' => true, // Преобразовать строку в нижний регистр.
   'map' => 'gost2000', // Транслитерация по ГОСТ 7.79-2000.
 ]
 ```
 
-#####Дополнительно
+### Дополнительно
 ```php
 // Получить карту транслитерации, используемую по-умолчанию
 Transliteration::getDefaultMap();
