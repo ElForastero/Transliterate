@@ -42,6 +42,6 @@ return [
     |
     */
     'transformers' => [
-        \ElForastero\Transliterate\Transformer::register(\Closure::fromCallable('trim'))
+//        \ElForastero\Transliterate\Transformer::register(\Closure::fromCallable('trim'))
     ],
 ];

@@ -31,10 +31,10 @@
   "extra": {
     "laravel": {
       "providers": [
-        "ElForastero\\Transliterate\\TransliterationServiceProvider"
+        "ElForastero\\Transliterate\\ServiceProvider"
       ],
       "aliases": {
-        "Transliteration": "ElForastero\\Transliterate\\TransliterationFacade"
+        "Transliteration": "ElForastero\\Transliterate\\Facade"
       }
     }
   },

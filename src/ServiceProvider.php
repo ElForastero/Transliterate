@@ -2,15 +2,15 @@
 
 namespace ElForastero\Transliterate;
 
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 /**
- * Class TransliterationServiceProvider
+ * Class ServiceProvider
  * @package ElForastero\Transliterate
  * @author Eugene Dzhumak <elforastero@ya.ru>
  * @version 2.0.0
  */
-class TransliterationServiceProvider extends ServiceProvider
+class ServiceProvider extends BaseServiceProvider
 {
     /**
      * Bootstrap the application services.

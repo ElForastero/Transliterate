@@ -2,15 +2,15 @@
 
 namespace ElForastero\Transliterate;
 
-use Illuminate\Support\Facades\Facade;
+use Illuminate\Support\Facades\Facade as BaseFacade;
 
 /**
- * Class TransliterationFacade
+ * Class Facade
  * @package ElForastero\Transliterate
  * @author Eugene Dzhumak <elforastero@ya.ru>
  * @version 2.0.0
  */
-class TransliterationFacade extends Facade
+class Facade extends BaseFacade
 {
     /**
      * @return string

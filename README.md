@@ -1,69 +1,107 @@
 # Transliterate
-Небольшой пакет для транслитерации кирилицы :poop:
+Небольшой пакет для транслитерации кириллицы. Из коробки поддерживаются 2 карты траслитерации: общепринятая и ГОСТ 7.79-2000. Поддерживается возможность создания своих собственных карт, что, по факту, дает возможность транслитерировать любые языки.
 
-### Дисклеймер
->Работать - работает. Сорян, если что не так.
+![Code example](example.jpg)
 
-Умеет:
-* строку в url ```['type' => 'url']```
-* строку в имя файла ```['type' => 'filename']```
+- [Системные требования](#Системные-требования)
+- [Установка](#Установка)
+- [Конфигурация](#Конфигурация)
+- [Использование](#Использование)
+- [Создание карт транслитерации](#Создание-карт-транслитерации)
+- [Создание трансформеров](#Создание-трансформеров)
 
-### Установка:
+
+### Системные требования
+laravel >= 5.6
+
+### Установка
 ```
 composer require elforastero/transliterate
 ```
 
+Laravel начиная с версии *5.5* не нуждается в дополнительной конфигурации благодаря механизму Package Discovery.
+
+Если вы не используте Package Discovery, необходимо зарегистрировать `Service Provider`, добавив его в массив `providers`, конфигурационного файла `app.php`.
+
 ```php
-//config/app.php
-
-'providers' => [
-  //...
-  ElForastero\Transliterate\TransliterationServiceProvider::class,
-],
-
-'aliases' => [
-  //...
-  'Transliterate' => ElForastero\Transliterate\TransliterationFacade::class,
-],
+ElForastero\Transliterate\ServiceProvider::class,
 ```
 
-### Использование:
+Если вы хотите использовать алиас, добавьте его в массив `facades` в `app.php`.
+
 ```php
-use Transliterate;
-...
-
-$string = '\'"#^_^ Если б мишки были пчёлами, то они бы нипочем, никогда и не подумали так высо́ко строить дом.';
-
-$string = Transliterate::make($string);
-// Esli b mishki bili pchyolami to oni bi nipochem nikogda i ne podumali tak visoko stroit dom
-
-$string = Transliterate::make($string, ['type' => 'url', 'lowercase' => true]);
-// esli-b-mishki-bili-pchyolami-to-oni-bi-nipochem-nikogda-i-ne-podumali-tak-visoko-stroit-dom
-
-$string = Transliterate::make($string, ['type' => 'filename', 'lowercase' => true]);
-// esli_b_mishki_bili_pchyolami_to_oni_bi_nipochem_nikogda_i_ne_podumali_tak_visoko_stroit_dom
-
-$string = Transliterate::make($string, ['type' => 'url', 'lowercase' => true, 'map' => 'gost2000']);
-// esli-b-mishki-by'li-pchyolami-to-oni-by'-nipochem-nikogda-i-ne-podumali-tak-vy'soko-stroit`-dom
+'Transliteration' => ElForastero\Transliterate\Facade::class,
 ```
 
-### Доступные параметры:
-```php
-[
-  'type' => 'url',
-  // 'url', 'filename' или 'text'. Первым заменяем пробелы на '-', вторым на '_'.
-  // По дефолту 'text', который ничего не заменяет.
-  
-  'lowercase' => true, // Преобразовать строку в нижний регистр.
-  'map' => 'gost2000', // Транслитерация по ГОСТ 7.79-2000.
-]
+### Конфигурация
+
+Для копирования конфига `transliterate.php` в директорию `configs` выполните
+
+```bash
+php artisan vendor:publish --provider="ElForastero\Transliterate\ServiceProvider"
 ```
 
-### Дополнительно
-```php
-// Получить карту транслитерации, используемую по-умолчанию
-Transliteration::getDefaultMap();
+### Использование
 
-// Карта по ГОСТ 2000
-Transliteration::getGost2000Map();
+Вы можете использовать фасад для транслитерации строк.
+
+```php
+use Transliteration;
+
+Transliteration::make('Двадцать тысяч льё под водой');
+// "Dvadcat tisyach lyo pod vodoy"
 ```
+
+Альтернативная карта транслитерации может быть передана вторым параметром.
+
+```php
+Transliteration::make('Двадцать тысяч льё под водой', 'gost2000');
+// "Dvadcat` ty'syach l`yo pod vodoj"
+```
+
+### Создание карт транслитерации
+
+Каждая карта представляет собой ассоциативный массив с символами подлежащими замене в качестве ключей, и значениями на которые они будут заменены.
+
+Карта создается в виде отдельного файла с возвращаемым массивом:
+
+```php
+// /resources/maps/ukraine.php
+
+return [
+    'ї' => 'i',
+    'і' => 'i',
+    'є' => 'ie',
+];
+```
+
+Добавьте путь к созданной карте в массив `maps`, конфига `transliterate.php`:
+
+```php
+'ukraine' => dirname(__DIR__) . '/resources/maps/ukraine.php',
+```
+
+После этого карту можно использовать.
+
+```php
+Transliteration::make('Ваша транслітерація', 'ukraine');
+```
+
+### Создание трансформеров
+
+Трансформеры - фукнции которые будут автоматически применены к результату транслитерации. Полезно если вам необходимо каждый раз производить одни и те же действия с транслитераруемой строкой. Регистрируется трансформер в массиве `transformers`.
+
+Например, можно автоматечески убирать конечные пробелы.
+
+```php
+ElForastero\Transliterate\Transformer::register(\Closure::fromCallable('trim')),
+```
+
+Или дополнительно приводить строки к нижнему регистру.
+
+```php
+ElForastero\Transliterate\Transformer::register(\Closure::fromCallable('trim')),
+ElForastero\Transliterate\Transformer::register(\Closure::fromCallable('strtolower')),
+```
+
+Будьте внимательны, поскольку трансформеры применяются при каждом вызове `Transliteration::make`.
