@@ -2,15 +2,17 @@
 
 namespace ElForastero\Transliterate\Tests;
 
+use ElForastero\Transliterate\Transformer;
+
 class TestCase extends \Orchestra\Testbench\TestCase
 {
-    /**
-     * {@inheritdoc}
-     */
     protected function getEnvironmentSetUp($app)
     {
-        $app['config']->set('transliterate.maps', [
-            'test' => __DIR__ . '/fixtures/maps/test.php',
+        $config = require dirname(__DIR__) . '/src/config/transliterate.php';
+        $app['config']->set('transliterate', $config);
+
+        Transformer::override([
+            \Closure::fromCallable('trim'),
         ]);
     }
 }

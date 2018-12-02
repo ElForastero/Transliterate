@@ -27,7 +27,7 @@ class Transliteration
         $clearedString = preg_replace("/[^\\s\\p{P}\\w${chars}]/iu", '', $string);
         $transliterated = str_replace(array_keys($map), array_values($map), $clearedString);
 
-        return $transliterated;
+        return self::applyTransformers($transliterated);
     }
 
     /**
@@ -47,5 +47,20 @@ class Transliteration
         }
 
         return require $vendorMapsPath . $map . '.php';
+    }
+
+    /**
+     * Apply a series of transformations defined as closures in the configuration file.
+     *
+     * @param string $string
+     * @return string
+     */
+    private static function applyTransformers(string $string): string
+    {
+        foreach (Transformer::getAll() as $transformer) {
+            $string = $transformer($string);
+        }
+
+        return $string;
     }
 }

@@ -8,6 +8,15 @@ class TransliterationTest extends TestCase
 {
     private $initialString = 'Если б мишки были пчёлами, то они бы нипочем, никогда и не подумали так высо́ко строить дом.';
 
+    protected function getEnvironmentSetUp($app)
+    {
+        parent::getEnvironmentSetUp($app);
+
+        $app['config']->set('transliterate.maps', [
+            'test' => __DIR__ . '/fixtures/maps/test.php',
+        ]);
+    }
+
     public function testMake()
     {
         $commonResult = 'Esli b mishki bili pchyolami, to oni bi nipochem, nikogda i ne podumali tak visoko stroit dom.';
