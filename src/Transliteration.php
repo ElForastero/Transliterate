@@ -39,14 +39,20 @@ class Transliteration
     private static function getMap(string $map = null): array
     {
         $map = $map ?? config('transliterate.map');
+        $customMaps = config('transliterate.maps');
         $vendorMapsPath = __DIR__ . '/maps/';
 
-        $customMaps = config('transliterate.maps');
         if ($customMaps !== null && array_key_exists($map, $customMaps)) {
-            return require $customMaps[$map];
+            $path = $customMaps[$map];
+        } else {
+            $path = $vendorMapsPath . $map . '.php';
         }
 
-        return require $vendorMapsPath . $map . '.php';
+        if (!file_exists($path)) {
+            throw new \InvalidArgumentException("Cant find transliteration map '${map}'");
+        }
+
+        return require $path;
     }
 
     /**

@@ -32,4 +32,11 @@ class TransliterationTest extends TestCase
 
         $this->assertEquals($testResult, Transliteration::make($this->initialString, 'test'));
     }
+
+    public function testMakeWithInvalidMapName()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+
+        Transliteration::make('Test', 'non-existent');
+    }
 }
