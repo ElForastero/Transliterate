@@ -1,4 +1,9 @@
-# Transliterate
+## Transliterate
+
+![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
+![GitHub release](https://img.shields.io/github/release/elforastero/transliterate.svg)
+![Packagist](https://img.shields.io/packagist/dt/elforastero/transliterate.svg)
+
 Небольшой пакет для транслитерации кириллицы. Из коробки поддерживаются 2 карты траслитерации: общепринятая и ГОСТ 7.79-2000. Поддерживается возможность создания своих собственных карт, что, по факту, дает возможность транслитерировать любые языки.
 
 ![Code example](example.png)
