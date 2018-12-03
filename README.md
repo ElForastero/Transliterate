@@ -21,7 +21,7 @@ laravel >= 5.6
 
 ## Установка
 ```
-composer require elforastero/transliterate
+> composer require elforastero/transliterate
 ```
 
 Laravel начиная с версии *5.5* не нуждается в дополнительной конфигурации благодаря механизму Package Discovery.
@@ -43,7 +43,7 @@ ElForastero\Transliterate\ServiceProvider::class,
 Для копирования конфига `transliterate.php` в директорию `configs` выполните
 
 ```bash
-php artisan vendor:publish --provider="ElForastero\Transliterate\ServiceProvider"
+> php artisan vendor:publish --provider="ElForastero\Transliterate\ServiceProvider"
 ```
 
 ## Использование
