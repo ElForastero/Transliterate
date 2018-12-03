@@ -20,7 +20,7 @@
 laravel >= 5.6
 
 ## Установка
-```bash
+```
 > composer require elforastero/transliterate
 ```
 
@@ -42,7 +42,7 @@ ElForastero\Transliterate\ServiceProvider::class,
 
 Для копирования конфига `transliterate.php` в директорию `configs` выполните
 
-```bash
+```
 > php artisan vendor:publish --provider="ElForastero\Transliterate\ServiceProvider"
 ```
 
