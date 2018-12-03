@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ElForastero\Transliterate;
 
 /**
@@ -7,17 +9,19 @@ namespace ElForastero\Transliterate;
  * Either by pull request or forking.
  *
  * Class Transliteration
- * @package ElForastero\Transliterate
+ *
  * @author Eugene Dzhumak <elforastero@ya.ru>
+ *
  * @version 2.0.0
  */
 class Transliteration
 {
     /**
-     * Transliterate the given string
+     * Transliterate the given string.
      *
      * @param string $string Text to be transliterated
-     * @param string $map Map to be used during transliteration
+     * @param string $map    Map to be used during transliteration
+     *
      * @return string
      */
     public static function make(string $string, string $map = null): string
@@ -31,21 +35,22 @@ class Transliteration
     }
 
     /**
-     * Get map array according to config file
+     * Get map array according to config file.
      *
      * @param string|null $map
+     *
      * @return array
      */
     private static function getMap(string $map = null): array
     {
         $map = $map ?? config('transliterate.map');
         $customMaps = config('transliterate.maps');
-        $vendorMapsPath = __DIR__ . '/maps/';
+        $vendorMapsPath = __DIR__.DIRECTORY_SEPARATOR.'maps'.DIRECTORY_SEPARATOR;
 
-        if ($customMaps !== null && array_key_exists($map, $customMaps)) {
+        if (null !== $customMaps && array_key_exists($map, $customMaps)) {
             $path = $customMaps[$map];
         } else {
-            $path = $vendorMapsPath . $map . '.php';
+            $path = $vendorMapsPath.$map.'.php';
         }
 
         if (!file_exists($path)) {
@@ -59,6 +64,7 @@ class Transliteration
      * Apply a series of transformations defined as closures in the configuration file.
      *
      * @param string $string
+     *
      * @return string
      */
     private static function applyTransformers(string $string): string

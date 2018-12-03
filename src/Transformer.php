@@ -1,11 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ElForastero\Transliterate;
 
 /**
- * Class Transformer
- * @package ElForastero\Transliterate
+ * Class Transformer.
+ *
  * @author Eugene Dzhumak <elforastero@ya.ru>
+ *
  * @version 1.0.0
  */
 final class Transformer
@@ -16,7 +19,7 @@ final class Transformer
     private static $stack = [];
 
     /**
-     * Add the callback into the stack
+     * Add the callback into the stack.
      *
      * @param callable $callback
      */
@@ -26,7 +29,7 @@ final class Transformer
     }
 
     /**
-     * Get an array of all registered callbacks
+     * Get an array of all registered callbacks.
      *
      * @return array<callable>
      */

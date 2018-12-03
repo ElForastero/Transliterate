@@ -5,9 +5,10 @@ namespace ElForastero\Transliterate;
 use Illuminate\Support\Facades\Facade as BaseFacade;
 
 /**
- * Class Facade
- * @package ElForastero\Transliterate
+ * Class Facade.
+ *
  * @author Eugene Dzhumak <elforastero@ya.ru>
+ *
  * @version 2.0.0
  */
 class Facade extends BaseFacade
