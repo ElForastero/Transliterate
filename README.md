@@ -20,7 +20,7 @@
 laravel >= 5.6
 
 ## Установка
-```
+```bash
 > composer require elforastero/transliterate
 ```
 
