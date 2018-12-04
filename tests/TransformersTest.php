@@ -3,7 +3,7 @@
 namespace ElForastero\Transliterate\Tests;
 
 use ElForastero\Transliterate\Transformer;
-use ElForastero\Transliterate\Transliteration;
+use ElForastero\Transliterate\Transliterator;
 
 class TransformersTest extends TestCase
 {
@@ -20,10 +20,11 @@ class TransformersTest extends TestCase
     public function testTransformers()
     {
         $initialString = '  Строка с пробелами  ';
+        $transliterator = (new Transliterator)->from('ru')->useMap('common');
 
         $this->assertEquals(
             strtoupper(trim('  Stroka s probelami  ')),
-            Transliteration::make($initialString)
+            $transliterator->make($initialString)
         );
     }
 }

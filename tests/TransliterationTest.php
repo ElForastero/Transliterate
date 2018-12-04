@@ -2,41 +2,43 @@
 
 namespace ElForastero\Transliterate\Tests;
 
-use ElForastero\Transliterate\Transliteration;
+use ElForastero\Transliterate\Transliterator;
 
 class TransliterationTest extends TestCase
 {
-    private $initialString = 'Если б мишки были пчёлами, то они бы нипочем, никогда и не подумали так высо́ко строить дом.';
+    private $initialString = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ';
 
     protected function getEnvironmentSetUp($app)
     {
         parent::getEnvironmentSetUp($app);
 
-        $app['config']->set('transliterate.maps', [
-            'test' => __DIR__ . '/fixtures/maps/test.php',
+        $app['config']->set('transliterate.custom_maps', [
+            'ru' => [
+                'test' => __DIR__ . '/fixtures/maps/test.php',
+            ],
         ]);
     }
 
     public function testMake()
     {
-        $commonResult = 'Esli b mishki bili pchyolami, to oni bi nipochem, nikogda i ne podumali tak visoko stroit dom.';
-        $gost2000Result = 'Esli b mishki by\'li pchyolami, to oni by\' nipochem, nikogda i ne podumali tak vy\'soko stroit` dom.';
+        $commonResult = 'abvgdeyozhziyklmnoprstufhcchshshhieyuyaABVGDEYoZhZIYKLMNOPRSTUFHCChShShhIEYuYa';
+        $gost2000Result = 'abvgdeyozhzijklmnoprstufxcchshshh``y\'`e`yuyaABVGDEYoZhZIJKLMNOPRSTUFXCChShShh``Y\'`E`YuYa';
 
-        $this->assertEquals($commonResult, Transliteration::make($this->initialString, 'common'));
-        $this->assertEquals($gost2000Result, Transliteration::make($this->initialString, 'gost2000'));
+        $transliterator = (new Transliterator)->from('ru')->useMap('common');
+
+        $this->assertEquals($commonResult, $transliterator->make($this->initialString));
+        $this->assertEquals($gost2000Result, $transliterator->useMap('GOST_7.79.2000')->make($this->initialString));
     }
 
     public function testCustomMap()
     {
-        $testResult = 'Если d мишки dыли пчёлbми, то они dы нипочем, никогдb и не подумbли тbк fысоко строить дом.';
-
-        $this->assertEquals($testResult, Transliteration::make($this->initialString, 'test'));
+        $transliterator = (new Transliterator)->from('ru')->useMap('test');
+        $this->assertEquals(str_repeat('a', 66), $transliterator->make($this->initialString));
     }
 
     public function testMakeWithInvalidMapName()
     {
         $this->expectException(\InvalidArgumentException::class);
-
-        Transliteration::make('Test', 'non-existent');
+        (new Transliterator)->useMap('non-existent')->make('Test');
     }
 }

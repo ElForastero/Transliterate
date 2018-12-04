@@ -10,10 +10,18 @@ return [
     | This option specifies the transliteration map that will be used by default
     | if no explicit one will be provided during Transliteration::make() call.
     |
-    | Supported: "common", "gost2000"
+    */
+    'default_map' => 'common',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Set default language
+    |--------------------------------------------------------------------------
+    | Language of transliterating text. Will be used unless no explicitly
+    | provided into Transliteration::from().
     |
     */
-    'map' => 'common',
+    'default_lang' => 'ru',
 
     /*
     |--------------------------------------------------------------------------
@@ -21,11 +29,13 @@ return [
     |--------------------------------------------------------------------------
     |
     | You can create your custom transliteration maps or even override default.
-    | Each map must be defined as "name" => "/absolute/path/to/map.php".
+    | Each map must be defined as "lang_code" => ["map_name" => "/absolute/path/to/map.php"].
     |
     */
-    'maps' => [
-//        'ukraine' => dirname(__DIR__) . '/app/path/to/maps/ukraine.php',
+    'custom_maps' => [
+//        'uk' => [
+//            'common' => dirname(__DIR__) . '/app/path/to/maps/uk/common.php',
+//        ],
     ],
 
     /*
@@ -44,4 +54,18 @@ return [
     'transformers' => [
 //        \ElForastero\Transliterate\Transformer::register(\Closure::fromCallable('trim'))
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Remove accents
+    |--------------------------------------------------------------------------
+    |
+    | Try to remove accents from letters already transliterated text.
+    | This feature uses iconv function, which may doesn't work properly depending
+    | on the installed libiconv realization.
+    |
+    | See http://php.net/manual/ru/intro.iconv.php
+    |
+    */
+    'remove_accents' => true,
 ];

@@ -22,12 +22,14 @@
   },
   "require": {
     "php": ">=7.1",
+    "ext-iconv": "*",
     "illuminate/support": "~5"
   },
   "require-dev": {
     "phpunit/phpunit": "^7.4",
     "orchestra/testbench": "^3.7",
-    "friendsofphp/php-cs-fixer": "^2.13"
+    "friendsofphp/php-cs-fixer": "^2.13",
+    "brainmaestro/composer-git-hooks": "^2.6"
   },
   "extra": {
     "laravel": {
@@ -37,6 +39,11 @@
       "aliases": {
         "Transliteration": "ElForastero\\Transliterate\\Facade"
       }
+    },
+    "hooks": {
+      "pre-commit": [
+        "php-cs-fixer fix . --rules=@Symfony"
+      ]
     }
   },
   "scripts": {

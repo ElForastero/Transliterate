@@ -35,7 +35,7 @@ class ServiceProvider extends BaseServiceProvider
         $this->mergeConfigFrom($configPath, 'transliterate');
 
         $this->app->bind('Transliteration', function ($app) {
-            return new Transliteration();
+            return new Transliterator();
         });
     }
 }
