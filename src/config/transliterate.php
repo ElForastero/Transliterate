@@ -60,11 +60,8 @@ return [
     | Remove accents
     |--------------------------------------------------------------------------
     |
-    | Try to remove accents from letters already transliterated text.
-    | This feature uses iconv function, which may doesn't work properly depending
-    | on the installed libiconv realization.
-    |
-    | See http://php.net/manual/ru/intro.iconv.php
+    | Remove accents from letters using ICU rules.
+    | E.g. À, Ä, Â, etc. all become A.
     |
     */
     'remove_accents' => true,

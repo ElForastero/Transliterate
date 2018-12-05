@@ -22,7 +22,7 @@
   },
   "require": {
     "php": ">=7.1",
-    "ext-iconv": "*",
+    "ext-intl": "*",
     "illuminate/support": "~5"
   },
   "require-dev": {

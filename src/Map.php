@@ -1,15 +1,19 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: elforastero
- * Date: 12/3/18
- * Time: 10:08 PM
- */
+
+declare(strict_types=1);
 
 namespace ElForastero\Transliterate;
 
-
-class Map
+/**
+ * Class Map.
+ * @author Eugene Dzhumak <elforastero@ya.ru>
+ * @version 2.0.0
+ */
+abstract class Map
 {
+    public const LANG_RU = 'ru';
+    public const LANG_UK = 'uk';
 
+    public const DEFAULT = 'common';
+    public const GOST_7_79_2000 = 'GOST_7.79.2000';
 }
