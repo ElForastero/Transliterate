@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  php:
+    build: .
+    volumes:
+      - ./:/srv/app
+    working_dir: /srv/app
+    command: bash -c "composer install && composer test"
+
