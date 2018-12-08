@@ -16,6 +16,6 @@ class Facade extends BaseFacade
      */
     public static function getFacadeAccessor()
     {
-        return 'Transliterator';
+        return 'Transliterate';
     }
 }

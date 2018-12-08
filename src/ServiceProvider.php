@@ -11,6 +11,8 @@ use Illuminate\Support\ServiceProvider as BaseServiceProvider;
  */
 class ServiceProvider extends BaseServiceProvider
 {
+    protected $defer = true;
+
     /**
      * Bootstrap the application services.
      */
@@ -32,8 +34,16 @@ class ServiceProvider extends BaseServiceProvider
 
         $this->mergeConfigFrom($configPath, 'transliterate');
 
-        $this->app->bind('Transliterator', function ($app) {
+        $this->app->bind('Transliterate', function () {
             return new Transliterator();
         });
+    }
+
+    /**
+     * @return array
+     */
+    public function provides()
+    {
+        return ['Transliterate'];
     }
 }

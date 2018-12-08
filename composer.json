@@ -37,7 +37,7 @@
         "ElForastero\\Transliterate\\ServiceProvider"
       ],
       "aliases": {
-        "Transliteration": "ElForastero\\Transliterate\\Facade"
+        "Transliterate": "ElForastero\\Transliterate\\Facade"
       }
     },
     "hooks": {

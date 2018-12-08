@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace ElForastero\Transliterate;
 
-use \Transliterator as IntlTransliterator;
+use Transliterator as IntlTransliterator;
 
 /**
  * Feel free to change it.
@@ -34,7 +34,7 @@ class Transliterator
     /**
      * Change transliterating text language.
      *
-     * @param string $lang One of the Map::LANG_* constants or custom language.
+     * @param string $lang one of the Map::LANG_* constants or custom language
      *
      * @return Transliterator
      */
@@ -46,9 +46,9 @@ class Transliterator
     }
 
     /**
-     * Change transliteration map
+     * Change transliteration map.
      *
-     * @param string $map Name of the transliteration map.
+     * @param string $map name of the transliteration map
      *
      * @return Transliterator
      */
@@ -114,8 +114,8 @@ class Transliterator
         $lang = $this->lang ?? config('transliterate.default_lang');
         $customMaps = config('transliterate.custom_maps');
 
-        $vendorMapsPath = __DIR__ . DIRECTORY_SEPARATOR . 'maps' . DIRECTORY_SEPARATOR;
-        $path = $customMaps[$lang][$map] ?? $vendorMapsPath . $lang . DIRECTORY_SEPARATOR . $map . '.php';
+        $vendorMapsPath = __DIR__.DIRECTORY_SEPARATOR.'maps'.DIRECTORY_SEPARATOR;
+        $path = $customMaps[$lang][$map] ?? $vendorMapsPath.$lang.DIRECTORY_SEPARATOR.$map.'.php';
 
         if (!file_exists($path)) {
             throw new \InvalidArgumentException("The transliteration map '${path}' doesn't exist");

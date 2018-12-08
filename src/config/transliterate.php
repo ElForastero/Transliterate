@@ -2,7 +2,7 @@
 
 use ElForastero\Transliterate\Map;
 
-/** @noinspection PhpVoidFunctionResultUsedInspection */
+/* @noinspection PhpVoidFunctionResultUsedInspection */
 return [
     /*
     |--------------------------------------------------------------------------

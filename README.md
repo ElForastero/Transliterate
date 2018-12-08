@@ -44,8 +44,10 @@ ElForastero\Transliterate\ServiceProvider::class,
 
 Если вы хотите использовать алиас, добавьте его в массив `facades` в `app.php`.
 
+Рекомендую в качестве алиаса использовать `Transliterate`, чтобы избежать конфликтов с Transliterator классом из расширения Intl.
+
 ```php
-'Transliterator' => ElForastero\Transliterate\Facade::class,
+'Transliterate' => ElForastero\Transliterate\Facade::class,
 ```
 
 ## Конфигурация
@@ -61,15 +63,17 @@ ElForastero\Transliterate\ServiceProvider::class,
 Вы можете использовать фасад для транслитерации строк.
 
 ```php
-use Transliterator;
+use Transliterate;
 
-(new Transliterator)->make('Двадцать тысяч льё под водой');
+Transliterate::make('Двадцать тысяч льё под водой');
 // "Dvadcat tisyach lyo pod vodoy"
 ```
 
 Альтернативная карта транслитерации может быть передана вторым параметром.
 
 ```php
+use ElForastero\Transliterate\Transliterator;
+
 $transliterator = new Transliterator(Map::LANG_RU, Map::GOST_7_79_2000);
 $transliterator->make('Двадцать тысяч льё под водой');
 // "Dvadcat` ty'syach l`yo pod vodoj"
@@ -80,7 +84,7 @@ $transliterator->make('Двадцать тысяч льё под водой');
 Метод `slugify` генерирует URL, убирая из строки все знаки препинания и заменяя пробелы на "-".
 
 ```php
-(new Transliterator)->slugify('Съешь еще этих мягких французских булок, да выпей чаю!');
+Transliterate::slugify('Съешь еще этих мягких французских булок, да выпей чаю!');
 // sesh-eshhe-etih-myagkih-francuzskih-bulok-da-vipey-chayu
 ```
 

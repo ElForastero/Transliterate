@@ -7,6 +7,7 @@
 - Added configuration file transliterate.php
 - Added ability to define custom transliteration maps
 - Added ability to define transformers
+- Added optional removing accents using ICU
 - Added tests
 
 ## Removed
