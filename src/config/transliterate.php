@@ -1,5 +1,7 @@
 <?php
 
+use ElForastero\Transliterate\Map;
+
 /** @noinspection PhpVoidFunctionResultUsedInspection */
 return [
     /*
@@ -8,20 +10,20 @@ return [
     |--------------------------------------------------------------------------
     |
     | This option specifies the transliteration map that will be used by default
-    | if no explicit one will be provided during Transliteration::make() call.
+    | if no another one will be provided during Transliteration::make() call.
     |
     */
-    'default_map' => 'common',
+    'default_map' => Map::DEFAULT,
 
     /*
     |--------------------------------------------------------------------------
     | Set default language
     |--------------------------------------------------------------------------
-    | Language of transliterating text. Will be used unless no explicitly
-    | provided into Transliteration::from().
+    | The language of transliterating text.
+    | Will be used unless no explicitly provided.
     |
     */
-    'default_lang' => 'ru',
+    'default_lang' => Map::LANG_RU,
 
     /*
     |--------------------------------------------------------------------------
@@ -61,7 +63,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | Remove accents from letters using ICU rules.
-    | E.g. À, Ä, Â, etc. all become A.
+    | E.g. À, Ä, Â, etc. - all become A.
     |
     */
     'remove_accents' => true,

@@ -8,8 +8,6 @@ namespace ElForastero\Transliterate;
  * Class Transformer.
  *
  * @author Eugene Dzhumak <elforastero@ya.ru>
- *
- * @version 1.0.0
  */
 final class Transformer
 {

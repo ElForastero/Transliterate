@@ -6,8 +6,8 @@ namespace ElForastero\Transliterate;
 
 /**
  * Class Map.
+ *
  * @author Eugene Dzhumak <elforastero@ya.ru>
- * @version 2.0.0
  */
 abstract class Map
 {

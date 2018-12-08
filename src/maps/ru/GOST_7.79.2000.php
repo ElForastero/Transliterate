@@ -1,7 +1,9 @@
 <?php
 
 /**
- * Transliteration by ГОСТ 7.79-2000.
+ * Transliteration by GOST 7.79-2000.
+ *
+ * @see https://en.wikipedia.org/wiki/Romanization_of_Russian
  */
 return [
     'ж' => 'zh',

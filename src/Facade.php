@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Facade as BaseFacade;
  * Class Facade.
  *
  * @author Eugene Dzhumak <elforastero@ya.ru>
- *
- * @version 2.0.0
  */
 class Facade extends BaseFacade
 {
@@ -18,6 +16,6 @@ class Facade extends BaseFacade
      */
     public static function getFacadeAccessor()
     {
-        return 'Transliteration';
+        return 'Transliterator';
     }
 }

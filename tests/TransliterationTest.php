@@ -15,7 +15,7 @@ class TransliterationTest extends TestCase
 
         $app['config']->set('transliterate.custom_maps', [
             'ru' => [
-                'test' => __DIR__ . '/fixtures/maps/test.php',
+                'test' => __DIR__.'/fixtures/maps/test.php',
             ],
         ]);
     }
@@ -36,7 +36,7 @@ class TransliterationTest extends TestCase
         $initialString = ' Съешь еще этих мягких французских булок, да выпей чаю! & 123';
         $expectedString = 'sesh-eshhe-etih-myagkih-francuzskih-bulok-da-vipey-chayu-and-123';
 
-        $this->assertEquals($expectedString, (new Transliterator)->slugify($initialString));
+        $this->assertEquals($expectedString, (new Transliterator())->slugify($initialString));
     }
 
     public function testCustomMap()

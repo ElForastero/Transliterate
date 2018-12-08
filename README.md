@@ -4,10 +4,11 @@
 ![GitHub release](https://img.shields.io/github/release/elforastero/transliterate.svg)
 ![Packagist](https://img.shields.io/packagist/dt/elforastero/transliterate.svg)
 
-Небольшой пакет для транслитерации кириллицы. Из коробки поддерживаются 2 карты траслитерации: общепринятая и ГОСТ 7.79-2000. Поддерживается возможность создания своих собственных карт.
+Небольшой пакет для транслитерации кириллицы с возможностью создания своих собственных карт транслитерации.
 
 ![Code example](example.png)
 
+- [Предустановленные карты](#Предустановленные-карты)
 - [Системные требования](#Системные-требования)
 - [Установка](#Установка)
 - [Конфигурация](#Конфигурация)
@@ -15,9 +16,18 @@
 - [Создание карт транслитерации](#Создание-карт-транслитерации)
 - [Создание трансформеров](#Создание-трансформеров)
 
+## Предустановленные карты
+
+- Русский
+    - Дефолтная
+    - ГОСТ 7.79 2000
+- Украинский
+    - Национальная
+
 
 ## Системные требования
-laravel >= 5.6
+- laravel >= 5.6
+- ext-intl
 
 ## Установка
 ```
@@ -35,7 +45,7 @@ ElForastero\Transliterate\ServiceProvider::class,
 Если вы хотите использовать алиас, добавьте его в массив `facades` в `app.php`.
 
 ```php
-'Transliteration' => ElForastero\Transliterate\Facade::class,
+'Transliterator' => ElForastero\Transliterate\Facade::class,
 ```
 
 ## Конфигурация
@@ -51,17 +61,27 @@ ElForastero\Transliterate\ServiceProvider::class,
 Вы можете использовать фасад для транслитерации строк.
 
 ```php
-use Transliteration;
+use Transliterator;
 
-Transliteration::make('Двадцать тысяч льё под водой');
+(new Transliterator)->make('Двадцать тысяч льё под водой');
 // "Dvadcat tisyach lyo pod vodoy"
 ```
 
 Альтернативная карта транслитерации может быть передана вторым параметром.
 
 ```php
-Transliteration::make('Двадцать тысяч льё под водой', 'gost2000');
+$transliterator = new Transliterator(Map::LANG_RU, Map::GOST_7_79_2000);
+$transliterator->make('Двадцать тысяч льё под водой');
 // "Dvadcat` ty'syach l`yo pod vodoj"
+```
+
+## Генерация URL
+
+Метод `slugify` генерирует URL, убирая из строки все знаки препинания и заменяя пробелы на "-".
+
+```php
+(new Transliterator)->slugify('Съешь еще этих мягких французских булок, да выпей чаю!');
+// sesh-eshhe-etih-myagkih-francuzskih-bulok-da-vipey-chayu
 ```
 
 ## Создание карт транслитерации
@@ -71,7 +91,7 @@ Transliteration::make('Двадцать тысяч льё под водой', 'g
 Карта создается в виде отдельного файла с возвращаемым массивом:
 
 ```php
-// /resources/maps/ukraine.php
+// /resources/maps/uk/ukraine.php
 
 return [
     'ї' => 'i',
@@ -83,13 +103,16 @@ return [
 Добавьте путь к созданной карте в массив `maps`, конфига `transliterate.php`:
 
 ```php
-'ukraine' => dirname(__DIR__) . '/resources/maps/ukraine.php',
+'uk' => [
+    'ukraine' => dirname(__DIR__) . '/resources/maps/uk/ukraine.php',
+]
 ```
 
 После этого карту можно использовать.
 
 ```php
-Transliteration::make('Ваша транслітерація', 'ukraine');
+$transliterator = new Transliterator('uk', 'ukraine');
+$transliterator->make('Ваша транслітерація');
 ```
 
 ## Создание трансформеров
@@ -109,4 +132,4 @@ ElForastero\Transliterate\Transformer::register(\Closure::fromCallable('trim')),
 ElForastero\Transliterate\Transformer::register(\Closure::fromCallable('strtolower')),
 ```
 
-> Будьте внимательны, поскольку трансформеры применяются при каждом вызове `Transliteration::make`.
+> Будьте внимательны, поскольку трансформеры применяются при каждом вызове `Transliterator::make`.

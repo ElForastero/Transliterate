@@ -2,6 +2,8 @@
 
 /**
  * Transliteration with commonly used map.
+ *
+ * @see https://en.wikipedia.org/wiki/Romanization_of_Ukrainian
  */
 return [
     'ж' => 'zh',

@@ -20,7 +20,7 @@ class TransformersTest extends TestCase
     public function testTransformers()
     {
         $initialString = '  Строка с пробелами  ';
-        $transliterator = (new Transliterator)->from('ru')->useMap('common');
+        $transliterator = (new Transliterator())->from('ru')->useMap('common');
 
         $this->assertEquals(
             strtoupper(trim('  Stroka s probelami  ')),

@@ -10,11 +10,9 @@ use \Transliterator as IntlTransliterator;
  * Feel free to change it.
  * Either by pull request or forking.
  *
- * Class Transliteration
+ * Class Transliterator
  *
  * @author Eugene Dzhumak <elforastero@ya.ru>
- *
- * @version 2.0.0
  */
 class Transliterator
 {
@@ -34,7 +32,10 @@ class Transliterator
     }
 
     /**
-     * @param string $lang
+     * Change transliterating text language.
+     *
+     * @param string $lang One of the Map::LANG_* constants or custom language.
+     *
      * @return Transliterator
      */
     public function from(string $lang): self
@@ -45,7 +46,10 @@ class Transliterator
     }
 
     /**
-     * @param string $map
+     * Change transliteration map
+     *
+     * @param string $map Name of the transliteration map.
+     *
      * @return Transliterator
      */
     public function useMap(string $map): self
@@ -67,7 +71,7 @@ class Transliterator
         $map = $this->getMap();
         $transliterated = str_replace(array_keys($map), array_values($map), $text);
 
-        if (config('transliterate.remove_accents', false) === true) {
+        if (true === config('transliterate.remove_accents', false)) {
             $transliterator = IntlTransliterator::create('Any-Latin; Latin-ASCII');
             $transliterated = $transliterator->transliterate($transliterated);
         }
@@ -79,6 +83,7 @@ class Transliterator
      * Create a slug by converting and removing all non-ascii characters.
      *
      * @param string $text
+     *
      * @return string
      */
     public function slugify(string $text): string
@@ -116,7 +121,7 @@ class Transliterator
             throw new \InvalidArgumentException("The transliteration map '${path}' doesn't exist");
         }
 
-        /** @noinspection PhpIncludeInspection */
+        /* @noinspection PhpIncludeInspection */
         return require $path;
     }
 

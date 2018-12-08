@@ -8,8 +8,6 @@ use Illuminate\Support\ServiceProvider as BaseServiceProvider;
  * Class ServiceProvider.
  *
  * @author Eugene Dzhumak <elforastero@ya.ru>
- *
- * @version 2.0.0
  */
 class ServiceProvider extends BaseServiceProvider
 {
@@ -34,7 +32,7 @@ class ServiceProvider extends BaseServiceProvider
 
         $this->mergeConfigFrom($configPath, 'transliterate');
 
-        $this->app->bind('Transliteration', function ($app) {
+        $this->app->bind('Transliterator', function ($app) {
             return new Transliterator();
         });
     }

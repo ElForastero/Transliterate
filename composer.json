@@ -42,12 +42,12 @@
     },
     "hooks": {
       "pre-commit": [
-        "php-cs-fixer fix . --rules=@Symfony"
+        "php-cs-fixer fix ."
       ]
     }
   },
   "scripts": {
     "test": "phpunit",
-    "check-style": "php-cs-fixer fix src/ --dry-run --diff --rules=@Symfony"
+    "check-style": "php-cs-fixer fix src/ --dry-run --diff"
   }
 }
