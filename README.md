@@ -34,6 +34,8 @@
 > composer require elforastero/transliterate
 ```
 
+> ⚠️ Для Laravel v5 используйте ветку v2: `composer require elforastero/transliterate "^2.0"`
+
 Laravel начиная с версии *5.5* не нуждается в дополнительной конфигурации благодаря механизму Package Discovery.
 
 Если вы не используте Package Discovery, необходимо зарегистрировать `Service Provider`, добавив его в массив `providers`, конфигурационного файла `app.php`.
