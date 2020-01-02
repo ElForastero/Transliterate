@@ -1,7 +1,7 @@
 {
   "name": "elforastero/transliterate",
-  "description": "Transliteration package for laravel 5",
-  "version": "2.0.0",
+  "description": "Transliteration package for laravel 6",
+  "version": "3.0.0",
   "type": "library",
   "license": "MIT",
   "authors": [
@@ -21,15 +21,15 @@
     }
   },
   "require": {
-    "php": ">=7.1",
+    "php": ">=7.2",
     "ext-intl": "*",
-    "illuminate/support": "~5"
+    "illuminate/support": "~6"
   },
   "require-dev": {
-    "phpunit/phpunit": "^7.4",
-    "orchestra/testbench": "^3.7",
-    "friendsofphp/php-cs-fixer": "^2.13",
-    "brainmaestro/composer-git-hooks": "^2.6"
+    "phpunit/phpunit": "^8.0",
+    "orchestra/testbench": "^4.4",
+    "friendsofphp/php-cs-fixer": "^2.16",
+    "brainmaestro/composer-git-hooks": "^2.8"
   },
   "extra": {
     "laravel": {
