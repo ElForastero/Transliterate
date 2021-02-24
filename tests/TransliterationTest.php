@@ -5,6 +5,9 @@ namespace ElForastero\Transliterate\Tests;
 use ElForastero\Transliterate\Transliterator;
 use ElForastero\Transliterate\Map;
 
+/**
+ * @covers \ElForastero\Transliterate\Transliterator
+ */
 class TransliterationTest extends TestCase
 {
     private $initialString = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ';

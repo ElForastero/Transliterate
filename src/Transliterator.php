@@ -105,8 +105,6 @@ class Transliterator
 
     /**
      * Get map array according to config file.
-     *
-     * @return array
      */
     private function getMap(): array
     {

@@ -40,9 +40,9 @@ class ServiceProvider extends BaseServiceProvider
     }
 
     /**
-     * @return array
+     * @return string[]
      */
-    public function provides()
+    public function provides(): array
     {
         return ['Transliterate'];
     }

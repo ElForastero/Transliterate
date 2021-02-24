@@ -17,6 +17,9 @@ class TransformersTest extends TestCase
         ]);
     }
 
+    /**
+     * @covers \ElForastero\Transliterate\Transliterator::applyTransformers
+     */
     public function testTransformers()
     {
         $initialString = '  Строка с пробелами  ';
