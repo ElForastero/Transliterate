@@ -1,7 +1,7 @@
 {
   "name": "elforastero/transliterate",
   "description": "Transliteration package for laravel",
-  "version": "5.0.0",
+  "version": "5.0.0-RC1",
   "type": "library",
   "license": "MIT",
   "authors": [
