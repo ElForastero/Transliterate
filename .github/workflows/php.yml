@@ -9,15 +9,15 @@ jobs:
     strategy:
       matrix:
         operating-system: [ubuntu-latest, macOS-latest]
-        php-versions: ['7.2', '7.3', '7.4']
+        php-versions: ['7.3', '7.4', '8.0']
     name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
 
     - name: Setup PHP
-      uses: shivammathur/setup-php@v1
+      uses: shivammathur/setup-php@v2
       with:
         php-version: ${{ matrix.php-versions }}
         extensions: mbstring, intl
@@ -26,23 +26,18 @@ jobs:
       id: composer-cache
       run: echo "::set-output name=dir::$(composer config cache-files-dir)"
 
-    - name: Cache composer dependencies
-      uses: actions/cache@v1
+    - name: Cache dependencies
+      uses: actions/cache@v2
       with:
         path: ${{ steps.composer-cache.outputs.dir }}
-        # Use composer.json for key, if composer.lock is not committed.
-        # key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
         key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
         restore-keys: ${{ runner.os }}-composer-
 
-    - name: Validate composer.json and composer.lock
-      run: composer validate
-
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress --no-suggest --optimize-autoloader
+      run: composer install --prefer-dist
 
     - name: Run test suite
       run: composer run-script test
-  
+
     - name: Run style-checking
       run: composer run-script check-style

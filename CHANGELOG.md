@@ -2,6 +2,7 @@
 
 ## [v5.0.0](https://github.com/elforastero/transliterate/releases/tag/2.0.0)
 - Support for Laravel 8
+- Drop support of php7.2
 - Require phpunit >= 9
 
 ## [v4.0.0](https://github.com/elforastero/transliterate/releases/tag/2.0.0)

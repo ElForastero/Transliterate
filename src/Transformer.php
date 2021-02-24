@@ -12,7 +12,7 @@ namespace ElForastero\Transliterate;
 final class Transformer
 {
     /**
-     * @var array
+     * @var string[]
      */
     private static $stack = [];
 
@@ -29,7 +29,7 @@ final class Transformer
     /**
      * Get an array of all registered callbacks.
      *
-     * @return array<callable>
+     * @return callable[]
      */
     public static function getAll(): array
     {
@@ -40,7 +40,7 @@ final class Transformer
      * Override closures stack.
      * For testing purposes only.
      *
-     * @param array $stack
+     * @param string[] $stack
      */
     public static function override(array $stack): void
     {
