@@ -1,5 +1,13 @@
 ## Release notes
 
+## [v5.0.0](https://github.com/elforastero/transliterate/releases/tag/2.0.0)
+- Support for Laravel 8
+- Require phpunit >= 9
+
+## [v4.0.0](https://github.com/elforastero/transliterate/releases/tag/2.0.0)
+
+## [v3.0.0](https://github.com/elforastero/transliterate/releases/tag/2.0.0)
+
 ## [v2.0.0](https://github.com/elforastero/transliterate/releases/tag/2.0.0)
 
 ## Added
