@@ -139,3 +139,21 @@ ElForastero\Transliterate\Transformer::register(\Closure::fromCallable('strtolow
 ```
 
 > Будьте внимательны, поскольку трансформеры применяются при каждом вызове `Transliterator::make`.
+
+### Разработка
+
+Для прогона PHPUnit тестов можно воспользоваться лежащим в корне Dockerfile:
+
+```bash
+docker-compose up --build
+
+...
+php_1  | Runtime:       PHP 8.0.22
+php_1  | Configuration: /srv/app/phpunit.xml
+php_1  |
+php_1  | .....                                                               5 / 5 (100%)
+php_1  |
+php_1  | Time: 00:00.959, Memory: 14.00 MB
+php_1  |
+php_1  | OK (5 tests, 6 assertions)
+```

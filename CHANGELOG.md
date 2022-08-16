@@ -1,6 +1,12 @@
 ## Release notes
 
-## [v5.0.0](https://github.com/elforastero/transliterate/releases/tag/v5.0.0)
+## [v6.0.0](https://github.com/elforastero/transliterate/releases/tag/v5.0.0-RC1)
+- Minimal PHP version is now php8.0
+- Support for Laravel 9
+- Update dependencies
+- Update Dockerfile to use php@8.0
+
+## [v5.0.0-RC1](https://github.com/elforastero/transliterate/releases/tag/v5.0.0-RC1)
 - Support for Laravel 8
 - Drop support of php7.2
 - Require phpunit >= 9
