@@ -97,7 +97,7 @@ Transliterate::slugify('Съешь еще этих мягких французс
 Карта создается в виде отдельного файла с возвращаемым массивом:
 
 ```php
-// /resources/maps/uk/ukraine.php
+// /resources/maps/ua/ukraine.php
 
 return [
     'ї' => 'i',
@@ -109,15 +109,15 @@ return [
 Добавьте путь к созданной карте в массив `maps`, конфига `transliterate.php`:
 
 ```php
-'uk' => [
-    'ukraine' => dirname(__DIR__) . '/resources/maps/uk/ukraine.php',
+'ua' => [
+    'ukraine' => dirname(__DIR__) . '/resources/maps/ua/ukraine.php',
 ]
 ```
 
 После этого карту можно использовать.
 
 ```php
-$transliterator = new Transliterator('uk', 'ukraine');
+$transliterator = new Transliterator('ua', 'ukraine');
 $transliterator->make('Ваша транслітерація');
 ```
 
