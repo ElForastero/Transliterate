@@ -25,13 +25,20 @@
     - Национальная
 
 
+## Это форк версия с добавленной поддержкой Laravel 11. Оригинальные тесты успешно были пройдены.
+
 ## Системные требования
 - laravel >= 5.6
 - ext-intl
 
-## Установка
+## Установка оригинала
 ```
-> composer require elforastero/transliterate
+> composer require elforastero/transliterate 
+```
+
+## Установка для Laravel 11 и выше
+```
+> composer require livevasiliy/transliterate 
 ```
 
 > ⚠️ Для Laravel v5 используйте ветку v2: `composer require elforastero/transliterate "^2.0"`

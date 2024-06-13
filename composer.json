@@ -1,7 +1,7 @@
 {
-  "name": "elforastero/transliterate",
+  "name": "livevasiliy/transliterate",
   "description": "Transliteration package for laravel",
-  "version": "7.0.0",
+  "version": "1.0.0",
   "type": "library",
   "license": "MIT",
   "authors": [
@@ -9,7 +9,12 @@
       "name": "Eugene Dzhumak",
       "email": "elforastero@ya.ru",
       "homepage": "https://elforastero.dev",
-      "role": "Developer"
+      "role": "Original creater developer"
+    },
+    {
+      "name": "Vasiliy Pivovarov",
+      "email": "liveasiliy@yandex.ru",
+      "role": "Developer support"
     }
   ],
   "autoload": {
@@ -23,9 +28,9 @@
     }
   },
   "require": {
-    "php": ">=8.1",
+    "php": "^8.1",
     "ext-intl": "*",
-    "illuminate/support": "^6.0|^7.0|^8.0|^9.0|^10.0"
+    "illuminate/support": "^6.0|^7.0|^8.0|^9.0|^10.0|^11.0"
   },
   "require-dev": {
     "phpunit/phpunit": ">=9.0",
