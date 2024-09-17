@@ -116,7 +116,7 @@ class Transliterator
         $path = $customMaps[$lang][$map] ?? $vendorMapsPath.$lang.DIRECTORY_SEPARATOR.$map.'.php';
 
         if (!file_exists($path)) {
-            throw new \InvalidArgumentException("The transliteration map '${path}' doesn't exist");
+            throw new \InvalidArgumentException("The transliteration map '{$path}' doesn't exist");
         }
 
         /* @noinspection PhpIncludeInspection */
